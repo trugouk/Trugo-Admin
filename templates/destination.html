@@ -1,0 +1,39 @@
+<div ng-include="'/admin/templates/nav.html'"></div>
+
+<!-- Destinations -->
+<div class="destination-content" ng-init="getDestinations()">
+    <div class="overlay notvisible">Please wait...</div>
+    <div class="home mt-5 mb-3">
+        <h4 class="text-center notice mb-3">Select Destinations</h4>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="input-group">
+                    <select class="form-control" id="destination">
+                        <option value="">--Select Destination--</option>
+                        <option ng-repeat="data in DestinationModel" value="{{$index}}">
+                            {{data.destination}}
+                    </select>
+                    <div class="input-group-append">
+                        <button class="destination_select" ng-click="SelectDestination()">Select</button>
+                    </div>
+                </div>
+                <!--Box-->
+                <ul class="box mt-3">
+                    <!--Block-->
+                    <li class="block" ng-repeat="data in SelectedDestinations">
+                        <div class="text">
+                            <span class="fa fa-map-marker marker"></span>
+                            {{data.destination}}
+                            <span class="fa fa-trash icon delete" ng-click="DeleteDestination($index)"></span>
+                        </div>
+                    </li>
+                </ul>
+                <button type="submit" ng-click="SaveDestination()" class="dest btn btn-primary mt-3"
+                    id="btn-operate">Save</button>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+</div>
+<!-- /Destinations -->

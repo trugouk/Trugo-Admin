@@ -1,0 +1,56 @@
+<div ng-include="'/admin/templates/nav.html'"></div>
+
+<!-- New User -->
+<div class="user-content" ng-init="getUserProfile()">
+    <div class="user mt-5">
+        <form class="form-horizontal" autocomplete="off" name="newuser">
+            <h4 class="mb-3 notice">Fields marked with <span class="error">*</span> are required</h4>
+            <fieldset>
+                <legend>New User</legend>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="user_name">Name <span class="error">*</span></label>
+                        <input type="text" class="form-control" name="user_name" ng-model="User.name" required>
+                        <span class="error"
+                            ng-show="newuser.user_name.$touched && newuser.user_name.$error.required">This
+                            field is required.</span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="email">Email <span class="error">*</span></label>
+                        <input type="email" class="form-control" name="email" ng-model="User.email" required>
+                        <span class="error" ng-show="newuser.email.$touched && newuser.email.$error.required">This
+                            field is required.</span>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="type">User Type <span class="error">*</span></label>
+                        <select class="form-control" ng-model="User.type" name="user_type" required>
+                            <option value="">--Select User Type--</option>
+                            <option value="1">Admin</option>
+                            <option value="0">Subscriber</option>
+                        </select>
+                        <span class="error"
+                            ng-show="newuser.user_type.$touched && newuser.user_type.$error.required">This
+                            field is required.</span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="password">Password
+                            <span class="error">*</span>
+                            <span ng-click="GeneratePass('user')" class="generate-pass">Generate password</span>
+                        </label>
+                        <input type="text" class="form-control" id="password" name="password" ng-model="User.password"
+                            required ng-minlength="8" ng-pattern="/^[A-Za-z0-9]*$/">
+                        <span class="error"
+                            ng-show="newuser.password.$touched && newuser.password.$error.required">This
+                            field is required.</span>
+                        <span class="error" ng-show="newuser.password.$error.minlength">Min 8 characters required</span>
+                    </div>
+                </div>
+                <button type="submit" ng-click="NewUser()" class="btn btn-primary" id="btn-operate"
+                    ng-disabled="newuser.$invalid">Save</button>
+            </fieldset>
+        </form>
+    </div>
+</div>
+<!-- /New User -->

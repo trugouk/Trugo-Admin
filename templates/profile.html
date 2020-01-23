@@ -1,0 +1,45 @@
+<div ng-include="'/admin/templates/nav.html'"></div>
+
+<!-- User Profile -->
+<div class="user-content" ng-init="getUserProfile()">
+    <div class="user mt-5">
+        <form class="form-horizontal" autocomplete="off" name="profile">
+            <h4 class="mb-3 notice">Fields marked with <span class="error">*</span> are required</h4>
+            <fieldset>
+                <legend>Your Profile</legend>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="user_name">Name <span class="error">*</span></label>
+                        <input type="text" class="form-control" name="user_name" ng-model="Profile.name" required>
+                        <span class="error"
+                            ng-show="profile.user_name.$touched && profile.user_name.$error.required">This
+                            field is required.</span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" name="email" ng-model="Profile.email"
+                            disabled="disabled">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="type">User Type</label>
+                        <input type="text" class="form-control" name="user_type" ng-model="Profile.type"
+                            disabled="disabled">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="password">Password
+                            <span ng-click="GeneratePass('profile')" class="generate-pass">Generate new password</span>
+                        </label>
+                        <input type="text" class="form-control" id="password" name="password"
+                            ng-model="Profile.password" ng-minlength="8">
+                        <span class="error" ng-show="profile.password.$error.minlength">Min 8 characters required</span>
+                    </div>
+                </div>
+                <button type="submit" ng-click="SaveProfile()" class="btn btn-primary" ng-disabled="profile.$invalid"
+                    id="btn-operate">Save Profile</button>
+            </fieldset>
+        </form>
+    </div>
+</div>
+<!-- /User Profile -->

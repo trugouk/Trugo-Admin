@@ -1,0 +1,356 @@
+<div ng-include="'/admin/templates/nav.html'"></div>
+
+<!-- Create New Tour Package -->
+<div class="content" ng-init="OnInit()">
+    <div class="new_tour mt-5">
+        <form class="form-horizontal" autocomplete="off" name="create">
+            <!--Accordian Box-->
+            <ul class="accordion-box">
+                <!--Block-->
+                <li class="accordion block active-block">
+                    <div class="acc-btn active">
+                        <div class="icon-outer">
+                            <span class="icon icon-plus fa fa-plus"></span>
+                            <span class="icon icon-minus fa fa-minus"></span>
+                        </div>
+                        General Information
+                    </div>
+                    <div class="acc-content" style="display: block;">
+                        <div class="content-acc">
+                            <!-- Start General Information -->
+                            <fieldset>
+                                <legend>Fields marked with <span class="error">*</span> are required</legend>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="destination">Destination <span class="error">*</span></label>
+                                        <select class="form-control" ng-model="CreateModel.destination"
+                                            name="destination" required>
+                                            <option value="">--Select Destination--</option>
+                                            <option ng-repeat="data in DestinationModel" value="{{data.destination}}">
+                                                {{data.destination}}
+                                        </select>
+                                        <span class="error"
+                                            ng-show="create.destination.$touched && create.destination.$error.required">This
+                                            field is required.</span>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="package_name">Package Name <span class="error">*</span></label>
+                                        <input type="text" class="form-control" ng-model="CreateModel.package_name"
+                                            name="package_name" required>
+                                        <span class="error"
+                                            ng-show="create.package_name.$touched && create.package_name.$error.required">This
+                                            field is required.</span>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="package_type">Package Type <span class="error">*</span></label>
+                                        <select class="form-control" ng-model="CreateModel.package_type"
+                                            name="package_type" required>
+                                            <option value="">--Select Package Type--</option>
+                                            <option value="adventure">Adventure</option>
+                                            <option value="beach">Beach</option>
+                                            <option value="trekking">Trekking</option>
+                                            <option value="cruise">Cruise</option>
+                                            <option value="honeymoon">Honeymoon</option>
+                                            <option value="family">Family</option>
+                                        </select>
+                                        <span class="error"
+                                            ng-show="create.package_type.$touched && create.package_type.$error.required">This
+                                            field is required.</span>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="starting_city">Starting City <span class="error">*</span></label>
+                                        <input type="text" class="form-control" ng-model="CreateModel.start_city"
+                                            name="start_city" required>
+                                        <span class="error"
+                                            ng-show="create.start_city.$touched && create.start_city.$error.required">This
+                                            field is required.</span>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="ending_city">Ending City <span class="error">*</span></label>
+                                        <input type="text" class="form-control" ng-model="CreateModel.end_city"
+                                            name="end_city" required>
+                                        <span class="error"
+                                            ng-show="create.end_city.$touched && create.end_city.$error.required">This
+                                            field is required.</span>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <!-- End General Information -->
+                        </div>
+                    </div>
+                </li>
+                <!--Block-->
+                <li class="accordion block">
+                    <div class="acc-btn">
+                        <div class="icon-outer">
+                            <span class="icon icon-plus fa fa-plus"></span>
+                            <span class="icon icon-minus fa fa-minus"></span>
+                        </div>
+                        Package Details
+                    </div>
+                    <div class="acc-content" style="display: none;">
+                        <div class="content-acc">
+                            <fieldset>
+                                <legend>Fields marked with <span class="error">*</span> are required</legend>
+                                <div id="inv-details">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
+                                            <label for="budget_per_day">Budget Per Day <span
+                                                    class="error">*</span></label>
+                                            <input type="text" class="form-control"
+                                                ng-model="CreateModel.budget_per_day" name="budget_per_day" required
+                                                ng-pattern="/^[0-9]*$/">
+                                            <span class="error"
+                                                ng-show="create.budget_per_day.$touched && create.budget_per_day.$error.required">This
+                                                field is required.</span>
+                                            <span class="error" ng-show="create.budget_per_day.$error.pattern">Only
+                                                number allowed</span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="budget">Complete Budget <span class="error">*</span></label>
+                                            <input type="text" class="form-control" ng-model="CreateModel.actual_budget"
+                                                name="actual_budget" required ng-pattern="/^[0-9]*$/">
+                                            <span class="error"
+                                                ng-show="create.actual_budget.$touched && create.actual_budget.$error.required">This
+                                                field is required.</span>
+                                            <span class="error" ng-show="create.actual_budget.$error.pattern">Only
+                                                number allowed</span>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="departure_date">Departure Date <span
+                                                    class="error">*</span></label>
+                                            <input type="date" class="form-control" name="departure_date" required
+                                                ng-model="CreateModel.departure_date"
+                                                ng-model-options="{timezone:'UTC'}">
+                                            <span class="error"
+                                                ng-show="create.departure_date.$touched && create.departure_date.$invalid">This
+                                                field is required.</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="tour_duration">Tour Duration (in days) <span
+                                                    class="error">*</span></label>
+                                            <input type="text" class="form-control" ng-model="CreateModel.duration"
+                                                name="duration" required ng-pattern="/^[0-9]*$/">
+                                            <span class="error"
+                                                ng-show="create.duration.$touched && create.duration.$error.required">This
+                                                field is required.</span>
+                                            <span class="error" ng-show="create.duration.$error.pattern">Only number
+                                                allowed</span>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="discount">Discount % if any</label>
+                                            <input type="text" class="form-control number"
+                                                ng-model="CreateModel.discount" ng-pattern="/^[0-9]*$/" name="discount">
+                                            <span class="error" ng-show="create.discount.$error.pattern">Only number
+                                                allowed</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-12">
+                                            <label for="package_info">Package Info <span class="error">*</span></label>
+                                            <textarea rows="5" cols="50" class="form-control" name="package_info"
+                                                required ng-model="CreateModel.package_info"></textarea>
+                                            <span class="error"
+                                                ng-show="create.package_info.$touched && create.package_info.$error.required">This
+                                                field is required.</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="popular">
+                                                Is this package popular <input value="popular" type="checkbox"
+                                                    ng-model="CreateModel.popular"></label>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <div class="form-row">
+                                                <div class="col-md-6">
+                                                    <label for="package_image">Package Image <span
+                                                            class="error">*</span></label>
+                                                    <p class="upload">Upload Package Image</p>
+                                                    <input type="file" accept="image/*" placeholder="Choose File"
+                                                        onchange="angular.element(this).scope().UploadPackImg(this.files)">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="package-image-src">
+                                                        <img src="" id="image" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <!--End Package Details -->
+                        </div>
+                    </div>
+                </li>
+                <!--Block-->
+                <li class="accordion block">
+                    <div class="acc-btn">
+                        <div class="icon-outer">
+                            <span class="icon icon-plus fa fa-plus"></span>
+                            <span class="icon icon-minus fa fa-minus"></span>
+                        </div>
+                        Detailed Itinerary
+                    </div>
+                    <div class="acc-content current" style="display: none;">
+                        <div class="content-acc">
+                            <!-- Start Detailed Itinerary -->
+                            <fieldset>
+                                <legend>Fields marked with <span class="error">*</span> are required</legend>
+                                <div class="form-row" ng-repeat="data in itinerary">
+                                    <div class="form-group col-md-6">
+                                        <label for="head">Day {{$index + 1}} Heading <span
+                                                class="error">*</span></label>
+                                        <textarea rows="5" cols="50" class="form-control" name="dayhead{{$index + 1}}"
+                                            required ng-model="data.title"></textarea>
+                                        <span class="error"
+                                            ng-show="create.dayhead{{$index + 1}}.$touched && create.dayhead{{$index + 1}}.$error.required">
+                                            This field is required.</span>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <div class="form-row">
+                                            <label for="day">Day {{$index + 1}} Description <span class="error">*</span>
+                                                <span ng-click="AddItinerary()" class="add" ng-show="ShowAdd(data)">
+                                                    <i class="fa fa-plus icon"></i>
+                                                </span>
+                                                <span ng-click="DeleteItinerary($index)" class="delete"
+                                                    ng-show="ShowDelete(data)">
+                                                    <i class="fa fa-trash icon"></i>
+                                                </span>
+                                            </label>
+                                            <textarea rows="5" cols="50" class="form-control" name="day{{$index + 1}}"
+                                                required ng-model="data.description"></textarea>
+                                            <span class="error"
+                                                ng-show="create.day{{$index + 1}}.$touched && create.day{{$index + 1}}.$error.required">
+                                                This field is required.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <!-- End Detailed Itinerary -->
+                        </div>
+                    </div>
+                </li>
+                <!--Block-->
+                <li class="accordion block">
+                    <div class="acc-btn">
+                        <div class="icon-outer">
+                            <span class="icon icon-plus fa fa-plus"></span>
+                            <span class="icon icon-minus fa fa-minus"></span>
+                        </div>
+                        Tourist Attractions
+                    </div>
+                    <div class="acc-content" style="display: none;">
+                        <div class="content-acc">
+                            <!-- Start Tourist Attractions -->
+                            <fieldset>
+                                <legend>Fields marked with <span class="error">*</span> are required</legend>
+                                <div class="form-row" ng-repeat="data in attractions">
+                                    <div class="form-group col-md-6">
+                                        <label for="title">Title {{$index + 1}} <span class="error">*</span></label>
+                                        <input type="text" class="form-control" ng-model="data.title"
+                                            name="title{{$index + 1}}" required>
+                                        <span class="error"
+                                            ng-show="create.title{{$index + 1}}.$touched && create.title{{$index + 1}}.$error.required">
+                                            This field is required.</span>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="image">Image <span class="error">*</span>
+                                            <span ng-click="AddAttraction()" class="add" ng-show="ShowAdded(data)">
+                                                <i class="fa fa-plus icon"></i></span>
+                                            <span ng-click="DeleteAttraction($index)" class="delete"
+                                                ng-show="ShowDeleted(data)">
+                                                <i class="fa fa-trash icon"></i></span>
+                                        </label>
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                <p class="upload">Upload Image</p>
+                                                <input type="file" accept="image/*" placeholder="Choose File"
+                                                    id="{{$index}}"
+                                                    onchange="angular.element(this).scope().UploadAttractionImg(this.files , this.getAttribute('id'))">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="image-src" id="src{{$index}}"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <!-- End Tourist Attractions -->
+                        </div>
+                    </div>
+                </li>
+                <!--Block-->
+                <li class="accordion block">
+                    <div class="acc-btn">
+                        <div class="icon-outer">
+                            <span class="icon icon-plus fa fa-plus"></span>
+                            <span class="icon icon-minus fa fa-minus"></span>
+                        </div>
+                        Other Informations
+                    </div>
+                    <div class="acc-content" style="display: none;">
+                        <div class="content-acc">
+                            <!-- Start Other Informations -->
+                            <fieldset class="new_tour_details">
+                                <legend>Fields marked with <span class="error">*</span> are required</legend>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="facilities">Facilities</label>
+                                        <p class="d-inline checkbox"><input type="checkbox"
+                                                ng-model="facilities.Breakfast"> Free Breakfast</p>
+                                        <p class="d-inline checkbox"><input type="checkbox"
+                                                ng-model="facilities.PickDrop"> Pick and Drop</p>
+                                        <p class="d-inline checkbox"><input type="checkbox" ng-model="facilities.Hotel">
+                                            Hotel Stay</p>
+                                        <p class="d-inline checkbox"><input type="checkbox" ng-model="facilities.Guide">
+                                            Tour Guide</p>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="carousel">Carousel Images <span class="error">*</span></label>
+                                        <p class="upload">Upload Carousel Images</p>
+                                        <input type="file" accept="image/*" placeholder="Choose Files" multiple
+                                            onchange="angular.element(this).scope().UploadCarouselImg(this.files)">
+                                        <div id="carousel-images" class="carousel-image-src"></div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <!-- End Other Informations -->
+                        </div>
+                    </div>
+                </li>
+                <button type="submit" ng-click="createPackage()" class="btn btn-primary" ng-disabled="create.$invalid"
+                    id="btn-operate">Save</button>
+            </ul>
+        </form>
+    </div>
+</div>
+<!-- /Create New Tour Package -->
+<script>
+    $(document).ready(function () {
+        //Accordion Box
+        if ($('.accordion-box').length) {
+            $(".accordion-box").on('click', '.acc-btn', function () {
+                var outerBox = $(this).parents('.accordion-box');
+                var target = $(this).parents('.accordion');
+                if ($(this).hasClass('active') !== true) {
+                    $(outerBox).find('.accordion .acc-btn').removeClass('active');
+                }
+                if ($(this).next('.acc-content').is(':visible')) {
+                    return false;
+                } else {
+                    $(this).addClass('active');
+                    $(outerBox).children('.accordion').removeClass('active-block');
+                    $(outerBox).find('.accordion').children('.acc-content').slideUp(300);
+                    target.addClass('active-block');
+                    $(this).next('.acc-content').slideDown(300);
+                }
+            });
+        }
+    });
+</script>

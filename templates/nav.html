@@ -1,0 +1,45 @@
+<nav class="navbar fixed-top navbar-expand-lg bg-dark navbar-dark">
+    <img class="brand" src="/admin/assets/images/trugo.png" alt="trugo" ng-click="navigate('/dashboard')"/>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" ng-click="navigate('/dashboard')"
+                    ng-class="{ active: isActive('/dashboard/{{sessionid}}')}">Dashboard</a>
+            </li>
+            <li class="nav-item" ng-show="type === '1'">
+                <a class="nav-link" ng-click="navigate('/new')" ng-class="{ active: isActive('/new/{{sessionid}}')}">New
+                    Package</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" ng-click="navigate('/destination')"
+                    ng-class="{ active: isActive('/destination/{{sessionid}}')}">Destinations</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" ng-click="navigate('/reviews')"
+                    ng-class="{ active: isActive('/reviews/{{sessionid}}')}">Reviews</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" ng-click="navigate('/email')"
+                    ng-class="{ active: isActive('/email/{{sessionid}}')}">Email</a>
+            </li>
+            <li class=" nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false"
+                    ng-class="{ active: isActive('/profile/{{sessionid}}') || isActive('/user/{{sessionid}}')}">Settings</a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" ng-click="navigate('/profile')"
+                        ng-class="{ active: isActive('/profile/{{sessionid}}')}">
+                        {{user}} - <span class="role">{{ (type === '1') ? 'Admin' : 'Subscriber' }}</span></a>
+                    <a class="dropdown-item" ng-click="navigate('/user')" ng-show="type === '1'"
+                        ng-class="{ active: isActive('/user/{{sessionid}}')}">
+                        Add new user</a>
+                    <a class="dropdown-item" ng-click="LogOut()">logout</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>

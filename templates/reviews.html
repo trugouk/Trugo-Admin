@@ -1,0 +1,126 @@
+<div ng-include="'/admin/templates/nav.html'"></div>
+
+<!-- Add Reviews -->
+<div class="content" ng-init="getReviews()">
+    <div class="overlay notvisible">Please wait...</div>
+    <div class="new_tour mt-5">
+        <ul class="accordion-box mt-3">
+            <!--Block-->
+            <li class="block">
+                <div class="block-text">
+                    Customer Reviews
+                    <span class="fa fa-plus icon add" ng-click="AddReview()"></span>
+                </div>
+            </li>
+        </ul>
+        <form class="form-horizontal" autocomplete="off" name="reviews">
+            <!--Accordian Box-->
+            <ul class="accordion-box">
+                <!--Block-->
+                <li ng-repeat="data in ReviewModel.results" class="accordion block {{data.active_block}}"
+                    ng-class="$index === 0 ? 'active-block' : ''">
+                    <div class="acc-btn {{data.active}}" ng-class="$index === 0 ? 'active' : ''">
+                        <div class="icon-outer">
+                            <span class="icon icon-plus fa fa-plus"></span>
+                            <span class="icon icon-minus fa fa-minus"></span>
+                        </div>
+                        Review - {{$index+1}}
+                        <span ng-show="$index != 0" ng-click="DeleteReview($index)"><i
+                                class="fa fa-trash icon delete"></i></span>
+                    </div>
+                    <div class="acc-content" ng-style="{'display': {{data.block}}}">
+                        <div class="content-acc">
+                            <fieldset>
+                                <legend>Fields marked with <span class="error">*</span> are required</legend>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="customer_name">Customer Name <span class="error">*</span></label>
+                                        <input type="text" class="form-control" ng-model="data.customer_name"
+                                            name="customer_name" required>
+                                        <span class="error"
+                                            ng-show="reviews.customer_name.$touched && reviews.customer_name.$error.required">This
+                                            field is required.</span>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="customer_designation">Customer Designation <span
+                                                class="error">*</span></label>
+                                        <input type="text" class="form-control" ng-model="data.customer_designation"
+                                            name="customer_designation" required>
+                                        <span class="error"
+                                            ng-show="reviews.customer_designation$touched && reviews.customer_designation.$error.required">This
+                                            field is required.</span>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="customer_review">Customer Review <span
+                                                class="error">*</span></label>
+                                        <textarea rows="4" cols="50" class="form-control" name="customer_review"
+                                            required ng-model="data.customer_review"></textarea>
+                                        <span class="error"
+                                            ng-show="reviews.customer_review.$touched && reviews.customer_review.$error.required">This
+                                            field is required.</span>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="customer_rating">Customer Rating</label>
+                                        <input type="range" min="1" max="5" value="1" id="rating" name="customer_rating"
+                                            ng-model="data.customer_rating"
+                                            ng-change="Rating($index , data.customer_rating)">
+                                        <p class="rating-value" id="rating-value{{$index}}">{{data.customer_rating}}</p>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                <label for="customer_image">Customer Image <span
+                                                        class="error">*</span></label>
+                                                <p class="upload">Upload Customer Image</p>
+                                                <input type="file" accept="image/*" placeholder="Choose File"
+                                                    id="{{$index}}"
+                                                    onchange="angular.element(this).scope().UploadCustomerImg(this.files , this.getAttribute('id'))">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="customer-image-src">
+                                                    <img ng-src="{{data.flag === false ? '' : '../admin/content/r' + '_' + data.customer_image}}"
+                                                        id="image{{$index}}" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        </fieldset>
+                    </div>
+    </div>
+    </li>
+    <button type="submit" ng-click="SaveReviews()" class="btn btn-primary" ng-disabled="reviews.$invalid"
+        id="btn-operate">Save</button>
+    </ul>
+    </form>
+</div>
+</div>
+<!-- /Add Reviews -->
+<script>
+    $(document).ready(function () {
+        //Accordion Box
+        if ($('.accordion-box').length) {
+            $(".accordion-box").on('click', '.acc-btn', function () {
+                var outerBox = $(this).parents('.accordion-box');
+                var target = $(this).parents('.accordion');
+                if ($(this).hasClass('active') !== true) {
+                    $(outerBox).find('.accordion .acc-btn').removeClass('active');
+                }
+                if ($(this).next('.acc-content').is(':visible')) {
+                    return false;
+                } else {
+                    $(this).addClass('active');
+                    $(outerBox).children('.accordion').removeClass('active-block');
+                    $(outerBox).find('.accordion').children('.acc-content').slideUp(300);
+                    target.addClass('active-block');
+                    $(this).next('.acc-content').slideDown(300);
+                }
+            });
+        }
+    });
+</script>

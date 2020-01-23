@@ -1,0 +1,87 @@
+<div ng-include="'/admin/templates/nav.html'"></div>
+
+<div class="content-dashboard" ng-init="getAllTours()">
+    <!--Scroll to top-->
+    <div class="scroll-to-top">
+        <span class="fa fa-angle-double-up"></span>
+    </div>
+    <div class="overlay notvisible">Please wait...</div>
+    <div class="col-lg-12">
+        <div class="mt-5">
+            <span class="fa fa-search search-icon"></span>
+            <input type="text" ng-model="tours" placeholder="search..." class="search">
+        </div>
+        <p ng-show="tours" class="results mt-3">Showing results for : {{tours}}</p>
+        <div class="row mt-3">
+            <div class="col-lg-4 col-md-6 col-sm-6 mb-3" ng-repeat="data in ReadModel | filter:tours">
+                <div class="card">
+                    <img class="card-img-top" ng-src="../admin/content/{{data.package_no}}_{{data.package_image_name}}"
+                        alt="{{data.destination}}">
+                    <div class="ribbon-small" ng-show="data.discount > 0">-{{data.discount}}%</div>
+                    <div class="tag">{{data.package_type}}</div>
+                    <div class="card-body">
+                        <h4 class="tour-title">{{data.package_name}} ({{data.package_no}})</h4>
+                        <div class="d-flex justify-content-center">
+                            <div class="edit-tour" ng-click="handleEdit(data.package_no)">Edit</div>
+                            <div class="delete-tour" ng-click="handleDelete(data.package_no)">Delete</div>
+                        </div>
+                        <hr>
+                        <table class="tour-info">
+                            <tr>
+                                <td>Destination</td>
+                                <td>{{data.destination}}</td>
+                            </tr>
+                            <tr>
+                                <td>Departure Date</td>
+                                <td>{{data.departure_date}}</td>
+                            </tr>
+                            <tr>
+                                <td>Duration</td>
+                                <td>{{data.duration}} Days</td>
+                            </tr>
+                            <tr>
+                                <td>Budget Per Day</td>
+                                <td>₹{{data.budget_per_day}}</td>
+                            </tr>
+                            <tr>
+                                <td>Popular</td>
+                                <td>
+                                    <span class="badge badge-pill"
+                                        ng-class="data.popular === '1' ? 'badge-success' : 'badge-secondary'">
+                                        {{data.popular === '1' ? 'Yes' : 'No'}}
+                                    </span>
+                                </td>
+                            </tr>
+                        </table>
+                        <hr>
+                        <div class="price">
+                            <h4 class="tour-price">
+                                <span
+                                    ng-class="{'original-price': data.discount_budget !== '0'}">₹{{data.actual_budget}}</span>
+                                <span ng-show="data.discount_budget !== '0'">₹{{data.discount_budget}}</span>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p ng-show="(ReadModel | filter:tours).length == 0" class="d-flex justify-content-center no-tours mt-5">
+        No Tours Found
+    </p>
+</div>
+<script>
+    $(document).ready(function () {
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 100) {
+                $(".scroll-to-top").fadeIn();
+            } else {
+                $(".scroll-to-top").fadeOut();
+            }
+        });
+        $(".scroll-to-top").click(function () {
+            $("html, body").animate({ scrollTop: 0 }, 400);
+            return false;
+        });
+    });
+</script>

@@ -1,0 +1,581 @@
+/*** 
+====================================================================
+  Common Settings
+====================================================================
+***/
+
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+.bg-light {
+  background-color: #cbcbcc !important;
+}
+.brand {
+  width: 130px;
+}
+.nav-link,
+.dropdown-item {
+  cursor: pointer;
+}
+.dropdown-item.active,
+.dropdown-item:active {
+  background-color: #bdd3ea;
+}
+.error,
+.delete {
+  color: #ff0000;
+}
+.add {
+  color: #009688;
+}
+.icon {
+  position: relative;
+  float: right;
+  top: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+  font-size: 20px;
+}
+.visible {
+  display: flex !important;
+}
+.notvisible {
+  display: none !important;
+}
+.overlay {
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.18);
+  font-size: xx-large;
+  cursor: wait;
+  color: white;
+  letter-spacing: 0.08em;
+  text-shadow: 1px 1px 10px black;
+}
+.scroll-to-top {
+  display: none;
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  width: 40px;
+  color: #ffffff;
+  font-size: 24px;
+  text-align: center;
+  z-index: 9;
+  cursor: pointer;
+  background: #02ad88;
+  border: 1px solid white;
+}
+.role {
+  color: blue;
+  font-weight: 600;
+}
+
+/*** 
+====================================================================
+  Login
+====================================================================
+***/
+
+.login-box {
+  background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+}
+.login-box-top {
+  margin-bottom: 1.5rem;
+  font-weight: normal;
+}
+.login-box-top div {
+  opacity: 0.6;
+}
+.login-box-top span {
+  font-size: 1.1rem;
+}
+.modal-dialog {
+  box-shadow: 0 0.76875rem 2.4875rem rgba(52, 58, 64, 0.3),
+    0 1.3375rem 1.70625rem rgba(52, 58, 64, 0.3),
+    0 0.55rem 0.53125rem rgba(0, 0, 0, 0.05),
+    0 0.225rem 0.4375rem rgba(52, 58, 64, 0.3);
+  border-radius: 0.25rem;
+}
+.modal-footer {
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+.modal-header,
+.modal-footer {
+  background: #f8f9fa;
+}
+.login-btn {
+  color: #fff;
+  background-color: #3f6ad8;
+  border-color: #3f6ad8;
+  border-radius: 0.3rem;
+  padding: 6px 20px 6px 20px;
+  border: none;
+}
+.login-btn:focus {
+  outline: none;
+}
+.opacity-8 {
+  opacity: 0.8 !important;
+}
+
+/*** 
+====================================================================
+  New Tour
+====================================================================
+***/
+
+.checkbox {
+  margin-right: 10px;
+}
+.image-src img,
+.package-image-src img,
+.customer-image-src img {
+  display: block;
+  margin: auto;
+}
+.image-src img {
+  width: 25%;
+}
+.package-image-src img,
+.customer-image-src img {
+  width: 50%;
+}
+.carousel-image-src img {
+  width: 18%;
+  margin: 5px 5px 0px 0px;
+}
+input[type="file"] {
+  width: 100%;
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+.upload {
+  border: 2px solid gray;
+  background-color: white;
+  padding: 4px 4px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+.content {
+  background: rgb(241, 242, 247);
+  padding: 2em;
+  min-height: 100vh;
+}
+.new_tour legend,
+.user legend {
+  line-height: 2em;
+  margin-bottom: 1em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+  font-size: 17px;
+  color: #4584ce;
+}
+.new_tour label,
+.user label {
+  font-size: 17px;
+  font-weight: initial;
+  width: 100%;
+}
+.form-control {
+  font-size: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  transition-duration: 0.5s;
+  -webkit-transition: border-color ease-in-out 0.15s,
+    -webkit-box-shadow ease-in-out 0.15s;
+  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+.form-control:focus {
+  border-color: #696969;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+.notice {
+  font-size: 18px;
+}
+.btn-primary {
+  margin: 10px;
+}
+@media only screen and (max-width: 600px) {
+  .notice {
+    font-size: 16px;
+  }
+  .new_tour .notice {
+    margin-top: 4em;
+  }
+  .new_tour form {
+    min-height: 100vh;
+  }
+  .content {
+    padding: 0.9em 0px;
+  }
+}
+
+/*** 
+====================================================================
+  Dashboard
+====================================================================
+***/
+
+.results {
+  font-size: 20px;
+  color: #15157b;
+}
+.no-tours {
+  font-weight: 700;
+}
+.content-dashboard {
+  background: rgb(241, 242, 247);
+  padding-top: 2em;
+  min-height: 100vh;
+}
+.card:hover {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.5s ease;
+}
+.card-img-top {
+  padding: 10px;
+  height: 300px;
+}
+.tag,
+.ribbon-small {
+  position: absolute;
+  z-index: 2;
+  font-weight: bold;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+.tag {
+  left: 20px;
+  background: #f44336;
+  padding: 2px 20px;
+  line-height: 30px;
+  text-transform: capitalize;
+}
+.ribbon-small {
+  right: 30px;
+  background: #ffc904;
+  text-align: center;
+  width: 50px;
+  height: 35px;
+  line-height: 35px;
+  font-size: 16px;
+}
+.ribbon-small:before {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10px 25px 0 0;
+  border-color: #ffc904 transparent transparent transparent;
+}
+.ribbon-small:after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 25px 10px 0;
+  border-color: transparent #ffc904 transparent transparent;
+}
+.tour-title {
+  font-size: 22px;
+  color: #15157b;
+  text-align: center;
+}
+.card-body {
+  padding: 2px 5px !important;
+}
+hr {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.nav-tabs .nav-link {
+  border: none;
+}
+.nav-tabs .nav-link.active {
+  border-color: white;
+}
+.nav-tabs .nav-link.active {
+  border-bottom: 3px solid #109e98;
+}
+.features li {
+  line-height: 2em;
+}
+ul.features {
+  list-style: none;
+}
+ul.features,
+.tour-price {
+  padding: 10px 10px 0px 10px;
+}
+.features li:before {
+  font-family: FontAwesome;
+  content: "\f00c";
+  margin-right: 10px;
+  color: #98ce44;
+}
+.tour-info {
+  width: 100%;
+}
+.tour-info td {
+  padding: 5px 5px 5px 10px;
+  text-transform: capitalize;
+}
+.tour-price {
+  text-align: center;
+  color: blueviolet;
+}
+.original-price {
+  margin-right: 10px;
+  text-decoration: line-through;
+}
+.search {
+  width: 100%;
+  padding: 10px 50px;
+  border: none;
+  border-radius: 25px;
+  outline: none;
+}
+.search-icon {
+  position: absolute;
+  line-height: 2.8rem;
+  pointer-events: none;
+  padding: 0px 22px;
+  color: cornflowerblue;
+}
+.edit-tour {
+  margin-right: 10px;
+  color: #4caf50;
+}
+.delete-tour {
+  color: red;
+}
+.delete-tour,
+.edit-tour {
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/*** 
+====================================================================
+  Profile and New User
+====================================================================
+***/
+
+.user {
+  background: white;
+  border-radius: 3px;
+}
+.user-content,
+.home-content,
+.destination-content {
+  background: rgb(241, 242, 247);
+  padding: 2em;
+  min-height: 100vh;
+}
+.user form {
+  padding: 20px;
+}
+.user .btn-primary {
+  margin: 10px 10px 10px 2px;
+}
+.generate-pass {
+  position: absolute;
+  color: #ff3f6c;
+  font-weight: 600;
+  cursor: pointer;
+  right: 8px;
+  top: 0;
+}
+
+@media only screen and (max-width: 600px) {
+  .user-content,
+  .home-content {
+    padding: 0.9em 0px;
+  }
+  .destination-content {
+    padding: 1.5em;
+  }
+}
+
+/*** 
+====================================================================
+	Accordion Style
+====================================================================
+***/
+
+.accordion-box {
+  position: relative;
+}
+.accordion-box .block {
+  position: relative;
+  padding: 12px 0px;
+  margin: 12px;
+  border: 1px solid #e1e1e1;
+  background-color: #ffffff;
+}
+.accordion-box .block .acc-btn {
+  position: relative;
+  font-size: 18px;
+  cursor: pointer;
+  line-height: 30px;
+  color: #000000;
+  font-weight: 500;
+  padding: 0px 10px 0px 64px;
+  transition: all 500ms ease;
+  -ms-transition: all 500ms ease;
+  -o-transition: all 500ms ease;
+  -moz-transition: all 500ms ease;
+  -webkit-transition: all 500ms ease;
+}
+.accordion-box .block .icon-outer {
+  position: absolute;
+  left: 14px;
+  top: 0px;
+  font-size: 18px;
+  color: #4145b1;
+  transition: all 500ms ease;
+  -moz-transition: all 500ms ease;
+  -webkit-transition: all 500ms ease;
+  -ms-transition: all 500ms ease;
+  -o-transition: all 500ms ease;
+}
+.accordion-box .block .icon-outer .icon {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 28px;
+  text-align: center;
+}
+.accordion-box .block .icon-outer .icon-plus {
+  opacity: 1;
+}
+.accordion-box .block .icon-outer .icon-minus {
+  opacity: 0;
+  font-weight: 300;
+}
+.accordion-box .block .acc-btn.active .icon-outer .icon-minus {
+  opacity: 1;
+  color: #ffffff;
+  background-color: #4145b1;
+}
+.accordion-box .block .acc-btn.active .icon-outer .icon-plus {
+  opacity: 0;
+}
+.accordion-box .block .acc-content {
+  position: relative;
+  display: none;
+}
+.accordion-box .block .acc-content .content-text {
+  padding-bottom: 6px;
+}
+.accordion-box .block .acc-content.current {
+  display: block;
+}
+
+.accordion-box .block .content-acc {
+  padding: 10px 30px 0px 30px;
+  margin: 10px;
+}
+.accordion-box .block .content-acc p:last-child {
+  margin-bottom: 0px;
+}
+.accordion-box,
+.accordion block {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+@media only screen and (max-width: 600px) {
+  .accordion-box .block {
+    margin: 0px;
+  }
+  .accordion-box .block .content-acc {
+    padding: 10px 10px 0px 10px;
+  }
+}
+
+/*** 
+====================================================================
+	Destinations Style
+====================================================================
+***/
+
+.destination_select {
+  background: #008b8b;
+  color: white;
+  border: none;
+  width: 100px;
+}
+.box .block {
+  padding: 10px 10px;
+  border: 1px solid #e1e1e1;
+  background-color: #ffffff;
+  list-style: none;
+  margin-top: 5px;
+}
+.box {
+  padding: 0px;
+  margin: 0px;
+}
+.dest {
+  margin: 0px;
+}
+.home select {
+  height: 45px;
+}
+.block .text,
+.block .block-text {
+  color: #00008b;
+  font-size: 20px;
+}
+.block .text {
+  padding: 1px 12px;
+}
+.marker {
+  color: #0000ff;
+  margin-right: 10px;
+}
+.block .block-text {
+  padding: 1px 24px;
+}
+
+/*** 
+====================================================================
+	Reviews Style
+====================================================================
+***/
+
+.rating-value {
+  display: inline-block;
+  margin-left: 60px;
+  font-size: 20px;
+  color: #ff4500;
+}

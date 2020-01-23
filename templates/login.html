@@ -1,0 +1,49 @@
+<body>
+    <div class="login-box">
+        <div class="overlay notvisible">Please wait...</div>
+        <div class="mx-auto col-md-8">
+            <div class="d-flex justify-content-center mb-5">
+                <img class="mt-3" src="/admin/assets/images/trugo.png" alt="trugo" />
+            </div>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="modal-title text-center">
+                            <h4 class="login-box-top mt-2">
+                                <div>Welcome back</div>
+                                <span>Please sign in to your account below</span>
+                            </h4>
+                        </div>
+                        <form autocomplete="off" name="login">
+                            <p class="error mb-3 text-center" id="login-error"></p>
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input name="email" ng-model="LoginModel.email" placeholder="Email here..."
+                                            type="email" class="form-control" required>
+                                        <span class="error" ng-show="login.email.$touched && login.email.$invalid">Email
+                                            is required.</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input name="password" required ng-model="LoginModel.pass" autocomplete="off"
+                                            placeholder="Password here..." type="password" class="form-control">
+                                        <span class="error"
+                                            ng-show="login.password.$touched && login.password.$invalid">Password
+                                            is required.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" ng-click="LoginValidate()" ng-disabled="login.$invalid"
+                            class="login-btn">Login</button>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center text-white opacity-8 mt-5">Copyright © Trugo 2019</div>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,32 @@
+<div ng-include="'/admin/templates/nav.html'"></div>
+
+<!-- Send Email -->
+<div class="user-content">
+    <div class="user mt-5">
+        <form class="form-horizontal" autocomplete="off" name="email">
+            <h4 class="mb-3 notice">Fields marked with <span class="error">*</span> are required</h4>
+            <fieldset>
+                <legend>Send Email</legend>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="subject">Subject <span class="error">*</span></label>
+                        <input type="text" class="form-control" name="subject" ng-model="Email.subject" required>
+                        <span class="error" ng-show="email.subject.$touched && email.subject.$error.required">This
+                            field is required.</span>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="body">Email Body <span class="error">*</span></label>
+                        <textarea class="form-control" name="body" ng-model="Email.body" required ck-editor></textarea>
+                        <span class="error" ng-show="email.body.$touched && email.body.$error.required">This
+                            field is required.</span>
+                    </div>
+                </div>
+                <button type="submit" ng-click="SendEmail()" class="btn btn-primary" ng-disabled="email.$invalid"
+                    id="btn-operate">Send</button>
+            </fieldset>
+        </form>
+    </div>
+</div>
+<!-- /Send Email -->
